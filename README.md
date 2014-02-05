@@ -6,10 +6,10 @@ Also, I like toast.
 
 Team Members & Roles
 
-Trevor Ransom - Leader - Communication with Professor, Team Website Design, All Around Baller
-Kyle Bischof - Visual Components of Design 
-Steven Smith - Network implementation, usability between platforms
-Michael Prigge - Project design, Code development and implementation.
+Trevor Ransom - Leader - Communication with Professor, Team Website Design  
+Kyle Bischof - Visual Components of Design   
+Steven Smith - Network implementation, Usability between Platforms  
+Michael Prigge - Project design, Code Development and Implementation
 
 Team Website:
 https://code.google.com/p/wait-for-it/
