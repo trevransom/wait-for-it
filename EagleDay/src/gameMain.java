@@ -38,10 +38,10 @@ public class gameMain extends JFrame {
 				thisClass.setResizable(false);		//Makes window static and not resizable
 			}
 		});
-		
 	}
 	
 	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); //loads map image
+	private ImageIcon test = new ImageIcon("files/ultra.jpg");
 
 	// Declaration of variables
 	/**
@@ -51,6 +51,9 @@ public class gameMain extends JFrame {
 	private int Luft_Commandlvl = 0;	//Luftwaffe command level
 	private boolean phase = false; 		//FALSE = Planning phase / TRUE = Operations phase
 	*/
+	
+	private int dice;			//variable for the rolling of die
+	private String diceValue;	//The output variable for the final dice value after roll
 	
 	// these arrays are for the cardStack of cards.
 	// You have as many or as few cards as you choose.
@@ -92,7 +95,8 @@ public class gameMain extends JFrame {
 	private JLabel cardDisplay = null;				//declaration for the label to display the cards
 	private JLabel currentPlayer = null;			//current player variable
 	private JLabel currentPlayerLabel = null;		//declare the current player label
-	private JLabel messageboxLabel = null;			//declare the box that displays messages to the user
+	private JLabel messageboxLabel = null;			//declare the box that displays messages to the user 
+	private JLabel dieValue = null; 				//variable for the die Value
 
 	
 	
@@ -124,7 +128,7 @@ public class gameMain extends JFrame {
 	private JButton getEndTurn() {
 		if (this.endTurn == null) {
 			this.endTurn = new JButton();
-			this.endTurn.setBounds(new Rectangle(967, 440, 150, 25));
+			this.endTurn.setBounds(new Rectangle(967, 420, 150, 25));
 			this.endTurn.setText("End Turn");
 			//this.play.addActionListener(new java.awt.event.ActionListener() {
 				//public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -140,9 +144,21 @@ public class gameMain extends JFrame {
 			this.help = new JButton();
 			this.help.setBounds(new Rectangle(1175, 5, 90, 25));
 			this.help.setText("Help");
-			//this.help.addActionListener(new java.awt.event.ActionListener() {
-				//public void actionPerformed(java.awt.event.ActionEvent e) {
-					//ADD HELP BUTTON CODE HERE (UNCOMMENT ABOVE 2 LINES WHEN IMPLEMENTING)
+			this.help.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					JFrame helpWindow = new JFrame("Help Menu");
+					helpWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					JLabel emptyLabel = new JLabel("");
+			        emptyLabel.setPreferredSize(new Dimension(500, 300));		//set dimensions of help window
+			        helpWindow.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+			        
+			        //INSERT CODE FOR INSTRUCTIONS AND GAME KEYS HERE
+
+			        //Display the help menu window
+			        helpWindow.pack();
+					helpWindow.setVisible(true);
+				}
+			});
 		}
 		return this.help;
 	}
@@ -151,7 +167,7 @@ public class gameMain extends JFrame {
 	private JButton getDisplayRoster() {
 		if (this.displayRoster == null) {
 			this.displayRoster = new JButton();
-			this.displayRoster.setBounds(new Rectangle(1050, 40, 125, 25));
+			this.displayRoster.setBounds(new Rectangle(1053, 40, 125, 25));
 			this.displayRoster.setText("Display Roster");
 			//this.displayRoster.addActionListener(new java.awt.event.ActionListener() {
 				//public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -164,7 +180,7 @@ public class gameMain extends JFrame {
 	private JButton getDrawCards() {
 		if (this.drawCards == null) {
 			this.drawCards = new JButton();
-			this.drawCards.setBounds(new Rectangle(1053, 170, 125, 25));
+			this.drawCards.setBounds(new Rectangle(1053, 145, 125, 25));
 			this.drawCards.setText("Draw Cards");
 			//this.displayRoster.addActionListener(new java.awt.event.ActionListener() {
 				//public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -177,7 +193,7 @@ public class gameMain extends JFrame {
 	private JButton getCardLeft() {
 		if (this.cardLeft == null) {
 			this.cardLeft = new JButton();
-			this.cardLeft.setBounds(new Rectangle(1090, 360, 20, 25));
+			this.cardLeft.setBounds(new Rectangle(1090, 377, 20, 25));
 			this.cardLeft.setText("<");
 			//this.displayRoster.addActionListener(new java.awt.event.ActionListener() {
 				//public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -190,7 +206,7 @@ public class gameMain extends JFrame {
 	private JButton getCardRight() {
 		if (this.cardRight == null) {
 			this.cardRight = new JButton();
-			this.cardRight.setBounds(new Rectangle(1120, 360, 20, 25));
+			this.cardRight.setBounds(new Rectangle(1120, 377, 20, 25));
 			this.cardRight.setText(">");
 			//this.displayRoster.addActionListener(new java.awt.event.ActionListener() {
 				//public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -203,16 +219,28 @@ public class gameMain extends JFrame {
 	private JButton getRollDie() {
 		if (this.rollDie == null) {
 			this.rollDie = new JButton();
-			this.rollDie.setBounds(new Rectangle(1115, 440, 150, 25));
+			this.rollDie.setBounds(new Rectangle(1115, 420, 150, 25));
 			this.rollDie.setText("Roll Die");
-			//this.rollDie.addActionListener(new java.awt.event.ActionListener() {
-				//public void actionPerformed(java.awt.event.ActionEvent e) {
-					//ADD ROLL DIE BUTTON CODE HERE (UNCOMMENT ABOVE 2 LINES WHEN IMPLEMENTING)
-		}
+			this.rollDie.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					String diceValue = " ";
+					dice = (int)(Math.random()*11) + 2;
+					diceValue = "Value: " + dice;
+					gameMain.this.dieValue.setText(diceValue);
+				}
+			});
+		}	
 		return this.rollDie;
 	}
-	
-	
+         
+    protected JComponent makeTextPanel(String text) {
+        JPanel panel = new JPanel(false);
+        JLabel filler = new JLabel(text);
+        filler.setHorizontalAlignment(JLabel.CENTER);
+        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
 
 	private void initialize() {
 		this.setSize(1280, 720);				//sets size-resolution for main window
@@ -221,15 +249,15 @@ public class gameMain extends JFrame {
 		
 		// Initializing GUI panels and components
 		this.ControlPanel = new JPanel();
-		this.ControlPanel.setLayout(new GridBagLayout());		//set layout for panels and compnents
+		this.ControlPanel.setLayout(new GridBagLayout());		//set layout for panels and components
 		
 		this.currentPlayerLabel = new JLabel();
-		this.currentPlayerLabel.setBounds(new Rectangle(1040, 100, 125, 25));
+		this.currentPlayerLabel.setBounds(new Rectangle(1040, 70, 125, 25));
 		this.currentPlayerLabel.setText("Current Player: ");
 		this.add(currentPlayerLabel);
 		this.currentPlayer = new JLabel();
-		this.currentPlayer.setBounds(new Rectangle(1140, 100, 125, 25));
-		this.currentPlayer.setText("Player 1");
+		this.currentPlayer.setBounds(new Rectangle(1140, 70, 125, 25));
+		this.currentPlayer.setText("British");		// British and German are the players
 		this.add(currentPlayer);
 		
 		this.dayLabel = new JLabel();												
@@ -288,11 +316,19 @@ public class gameMain extends JFrame {
 		this.add(Luft_Commandlvl);
 		
 		this.cardDisplay = new JLabel();
-		this.cardDisplay.setBounds(new Rectangle(1050, 200, 133, 157));	
+		this.cardDisplay.setBounds(new Rectangle(1050, 170, 133, 205));	
 		this.cardDisplay.setText("");
 		this.cardDisplay.setBackground(Color.black);
+		this.cardDisplay.setIcon(test);
 		this.cardDisplay.setBorder(this.loweredbevel);
 		this.add(cardDisplay);
+		
+		this.dieValue = new JLabel();
+		this.dieValue.setBounds(new Rectangle(1115, 450, 150, 25));
+		this.dieValue.setText("");
+		this.dieValue.setBorder(this.blackline);
+		this.dieValue.setHorizontalAlignment(SwingConstants.CENTER);
+		this.add(dieValue);
 		
 		this.messagebox = new JTextArea();
 		this.messagebox.setBounds(new Rectangle(965, 490, 300, 100));	
@@ -306,6 +342,7 @@ public class gameMain extends JFrame {
 		this.messageboxLabel.setText("Message Box");
 		this.add(messageboxLabel);
 		
+		//add JButtons to GUI
 		this.add(getNewGame(), null);				//add newGame button to GUI
 		this.add(getEndTurn(), null);				//add play button to GUI
 		this.add(getHelp(), null);					//add help button to GUI 
@@ -316,10 +353,17 @@ public class gameMain extends JFrame {
 		this.add(getCardRight(), null);				//add cardRight button to GUI
 		
 		
-		//setLayout(new BorderLayout()); 
-		JLabel background = new JLabel(backgroundMapImage);							//puts map image in window
-		add(background);															//add image to GUI
+		
+		
+		//setLayout(new BorderLayout()); 		
+		JLabel background = new JLabel(backgroundMapImage);
+		//background.setLayout(new OverlayLayout(background));	//overlay for multiple images
+		add(background);		
 
+		//JLabel testImage = new JLabel(test);
+		//testImage.setLayout(new OverlayLayout(testImage));
+		//add(testImage);
 	}
+
 	
 }
