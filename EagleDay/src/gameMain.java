@@ -13,8 +13,11 @@
 //When dealing with files relating to the project
 //		- Please make all file names clear and understandable
 //		- Please upload all the files to the project Dropbox so everyone has access
-//****************************************************************************************************************
+//		- Java in Eclipse works with file extensions .jpg, .png, and .gif 
 //
+//**********LEARN AND UNDERSTAND HOW THE CODE WORKS BEFORE MAKING ANY CHANGES TO REDUCE NUMBER OF ERRORS**********
+//****************************************************************************************************************
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -41,17 +44,9 @@ public class gameMain extends JFrame {
 	}
 	
 	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); //loads map image
-	private ImageIcon test = new ImageIcon("files/ultra.jpg");
+	private ImageIcon test = new ImageIcon("files/CARD_TEST.png");
 
-	// Declaration of variables
-	/**
-	private int day = 1;				//what day it currently is
-	private int hour = 1;				//what hour of the day it is
-	private int RAF_Commandlvl = 0; 	//RAF command level
-	private int Luft_Commandlvl = 0;	//Luftwaffe command level
-	private boolean phase = false; 		//FALSE = Planning phase / TRUE = Operations phase
-	*/
-	
+	// Declaration of variables	
 	private int dice;			//variable for the rolling of die
 	private String diceValue;	//The output variable for the final dice value after roll
 	
@@ -119,7 +114,6 @@ public class gameMain extends JFrame {
 				//public void actionPerformed(java.awt.event.ActionEvent e) {
 					//ADD NEWGAME BUTTON CODE HERE (UNCOMMENT ABOVE 2 LINES WHEN IMPLEMENTING)
 		}
-		
 		return this.newGame;
 	}
 
@@ -147,7 +141,6 @@ public class gameMain extends JFrame {
 			this.help.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					JFrame helpWindow = new JFrame("Help Menu");
-					helpWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					JLabel emptyLabel = new JLabel("");
 			        emptyLabel.setPreferredSize(new Dimension(500, 300));		//set dimensions of help window
 			        helpWindow.getContentPane().add(emptyLabel, BorderLayout.CENTER);
@@ -180,7 +173,7 @@ public class gameMain extends JFrame {
 	private JButton getDrawCards() {
 		if (this.drawCards == null) {
 			this.drawCards = new JButton();
-			this.drawCards.setBounds(new Rectangle(1053, 145, 125, 25));
+			this.drawCards.setBounds(new Rectangle(1053, 115, 125, 25));
 			this.drawCards.setText("Draw Cards");
 			//this.displayRoster.addActionListener(new java.awt.event.ActionListener() {
 				//public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -233,14 +226,6 @@ public class gameMain extends JFrame {
 		return this.rollDie;
 	}
          
-    protected JComponent makeTextPanel(String text) {
-        JPanel panel = new JPanel(false);
-        JLabel filler = new JLabel(text);
-        filler.setHorizontalAlignment(JLabel.CENTER);
-        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        return panel;
-    }
 
 	private void initialize() {
 		this.setSize(1280, 720);				//sets size-resolution for main window
@@ -316,7 +301,7 @@ public class gameMain extends JFrame {
 		this.add(Luft_Commandlvl);
 		
 		this.cardDisplay = new JLabel();
-		this.cardDisplay.setBounds(new Rectangle(1050, 170, 133, 205));	
+		this.cardDisplay.setBounds(new Rectangle(1045, 140, 140, 230));	
 		this.cardDisplay.setText("");
 		this.cardDisplay.setBackground(Color.black);
 		this.cardDisplay.setIcon(test);
@@ -353,16 +338,10 @@ public class gameMain extends JFrame {
 		this.add(getCardRight(), null);				//add cardRight button to GUI
 		
 		
-		
-		
 		//setLayout(new BorderLayout()); 		
 		JLabel background = new JLabel(backgroundMapImage);
 		//background.setLayout(new OverlayLayout(background));	//overlay for multiple images
 		add(background);		
-
-		//JLabel testImage = new JLabel(test);
-		//testImage.setLayout(new OverlayLayout(testImage));
-		//add(testImage);
 	}
 
 	
