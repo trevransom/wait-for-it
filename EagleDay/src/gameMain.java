@@ -27,6 +27,8 @@ import java.awt.Color;
 
 import javax.swing.border.*;
 
+//first round the user sees all of the tokens, after placing all of them the UI 
+//changes to show Abort and Damage. 
 
 public class gameMain extends JFrame {
 
@@ -43,21 +45,91 @@ public class gameMain extends JFrame {
 		});
 	}
 	
-	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); //loads map image
+	
+	//DECLARATION OF IMAGES
+	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); 	//loads map image
 	private ImageIcon test = new ImageIcon("files/CARD_TEST.png");
+	//British Tokens
+	private ImageIcon AA1_1 = new ImageIcon("britishTokens/AA1_1.jpg"); 
+	private ImageIcon AA1_2 = new ImageIcon("britishTokens/AA1_2.jpg");
+	private ImageIcon AA1_3 = new ImageIcon("britishTokens/AA1_3.jpg");
+	private ImageIcon AA2_1 = new ImageIcon("britishTokens/AA2_1.jpg");
+	private ImageIcon AA2_2 = new ImageIcon("britishTokens/AA2_2.jpg");
+	private ImageIcon Blen = new ImageIcon("brisithTokens/Blen_1.jpg");
+	private ImageIcon Decoy_1 = new ImageIcon("britishTokens/Decoy_1.jpg");
+	private ImageIcon Decoy_2 = new ImageIcon("britishTokens/Decoy_2.jpg");
+	private ImageIcon Decoy_3 = new ImageIcon("britishTokens/Decoy_3.jpg");
+	private ImageIcon Defiant = new ImageIcon("britishTokens/Defiant_1.jpg");
+	private ImageIcon HQ_10 = new ImageIcon("britishTokens/HQ_10group.jpg");
+	private ImageIcon HQ_11 = new ImageIcon("britishTokens/HQ_11group.jpg");
+	private ImageIcon HQ_12 = new ImageIcon("britishTokens/HQ_12group.jpg");
+	private ImageIcon Hurri_1 = new ImageIcon("britishTokens/Hurri_1.jpg");
+	private ImageIcon Hurri_2 = new ImageIcon("britishTokens/Hurri_2.jpg");
+	private ImageIcon Hurri_3 = new ImageIcon("britishTokens/Hurri_3.jpg");
+	private ImageIcon Spitfire_1 = new ImageIcon("britishTokens/Spitfire_1.jpg");
+	private ImageIcon Spitfire_2 = new ImageIcon("britishTokens/Spitfire_2.jpg");
+	//German Tokens
+	private ImageIcon Do17_1 = new ImageIcon("germanTokens/Do17_1.jpg");
+	private ImageIcon Do17_2 = new ImageIcon("germanTokens/Do17_2.jpg");
+	private ImageIcon He111_1 = new ImageIcon("germanTokens/He111_1.jpg");
+	private ImageIcon He111_2 = new ImageIcon("germanTokens/He111_2.jpg");
+	private ImageIcon He111_3 = new ImageIcon("germanTokens/He111_3.jpg");
+	private ImageIcon He111_4 = new ImageIcon("germanTokens/He111_4.jpg");
+	private ImageIcon He115 = new ImageIcon("germanTokens/He115_1.jpg");
+	private ImageIcon Ju87_1 = new ImageIcon("germanTokens/Ju87_1.png");
+	private ImageIcon Ju87_2 = new ImageIcon("germanTokens/Ju87_2.jpg");
+	private ImageIcon Ju88_1 = new ImageIcon("germanTokens/Ju88_1.jpg");
+	private ImageIcon Ju88_2 = new ImageIcon("germanTokens/Ju88_2.jpg");
+	private ImageIcon Ju88_3 = new ImageIcon("germanTokens/Ju88_3.jpg");
+	private ImageIcon Me109_1 = new ImageIcon("germanTokens/Me109_1.jpg");
+	private ImageIcon Me109_2 = new ImageIcon("germanTokens/Me109_2.jpg");
+	private ImageIcon Me109_3 = new ImageIcon("germanTokens/Me109_3.jpg");
+	private ImageIcon Me109_4 = new ImageIcon("germanTokens/Me109_4.jpg");
+	private ImageIcon Me110_1 = new ImageIcon("germanTokens/Me110_1.jpg");
+	private ImageIcon Me110_2 = new ImageIcon("germanTokens/Me110_2.jpg");
+	//Cards
+	private ImageIcon GED01 = new ImageIcon("cards/GED01.png");
+	private ImageIcon GED02 = new ImageIcon("cards/GED02.png");
+	private ImageIcon GED03 = new ImageIcon("cards/GED03.png");
+	private ImageIcon GED04 = new ImageIcon("cards/GED04.png");
+	private ImageIcon GED05 = new ImageIcon("cards/GED05.png");
+	private ImageIcon GED06 = new ImageIcon("cards/GED06.png");
+	private ImageIcon GED07 = new ImageIcon("cards/GED07.png");
+	private ImageIcon GED08 = new ImageIcon("cards/GED08.png");
+	private ImageIcon GED09 = new ImageIcon("cards/GED09.png");
+	private ImageIcon BED10 = new ImageIcon("cards/BED10.png");
+	private ImageIcon BED11 = new ImageIcon("cards/BED11.png");
+	private ImageIcon BED12 = new ImageIcon("cards/BED12.png");
+	private ImageIcon BED13 = new ImageIcon("cards/BED13.jpg");
+	private ImageIcon BED14 = new ImageIcon("cards/BED14.jpg");
+	private ImageIcon BED15 = new ImageIcon("cards/BED15.jpg");
+	private ImageIcon BED16 = new ImageIcon("cards/BED16.jpg");
+	private ImageIcon BED17 = new ImageIcon("cards/BED17.jpg");
+	private ImageIcon BED18 = new ImageIcon("cards/BED18.jpg");
+	
+	
 
 	// Declaration of variables	
 	private int dice;			//variable for the rolling of die
 	private String diceValue;	//The output variable for the final dice value after roll
 	
-	// these arrays are for the cardStack of cards.
+	// these arrays are for the cardStack of cards. 
 	// You have as many or as few cards as you choose.
-	private String[] britishCardStack = new String[10];
-	private String[] germanCardStack = new String[10];
-	
+	private Vector<ImageIcon> britishCardStack = new Vector<ImageIcon>();	//9 British cards
+	private Vector<ImageIcon> germanCardStack = new Vector<ImageIcon>();	//9 German cards
 	// these vectors hold the players cards
-	private Vector<String> Player1Cards = new Vector<String>();
-	private Vector<String> Player2Cards = new Vector<String>();
+	private Vector<ImageIcon> britishCurrentCards = new Vector<ImageIcon>();	//British users current cards
+	private Vector<ImageIcon> germanCurrentCards = new Vector<ImageIcon>();		//German users current cards
+	
+	//Vectors to hold the tokens at different intervals of the game
+	private Vector<ImageIcon> britishTokenStack = new Vector<ImageIcon>();		//18 British Tokens to start
+	private Vector<ImageIcon> germanTokenStack = new Vector<ImageIcon>();		//18 German Tokens to start
+	private Vector<ImageIcon> britishAbortStack = new Vector<ImageIcon>();		//British aborted tokens
+	private Vector<ImageIcon> britishDamageStack = new Vector<ImageIcon>();		//British damaged tokens
+	private Vector<ImageIcon> germanAbortStack = new Vector<ImageIcon>();		//German aborted tokens
+	private Vector<ImageIcon> germanDamageStack = new Vector<ImageIcon>();		//German damaged tokens
+	
+
 	
 	// Declaration of GUI panels and components
 	private Border blackline = BorderFactory.createLineBorder(Color.black);		//declaration of the blackline border
@@ -83,11 +155,17 @@ public class gameMain extends JFrame {
 	private JLabel hourLabel = null;				//declare the hour label
 	private JLabel phase = null;					//phase variable
 	private JLabel phaseLabel = null;				//declare the phase label
+	private JLabel RAF_Abort = null;				//declare abort label for RAF
+	private JLabel RAF_Damage = null;				//declare damage label for RAF
+	private JLabel Luft_Abort = null;				//declare abort label for Luftwaffe
+	private JLabel Luft_Damage = null;				//declare damage label for Luftwaffe
 	private JLabel RAF_Commandlvl = null;			//RAF Command Level variable
 	private JLabel RAF_Commandlvl_Label = null;		//declare the RAF_Commandlevel label
 	private JLabel Luft_Commandlvl = null;			//Luft Command Level variable
 	private JLabel Luft_Commandlvl_Label = null;	//declare the Luftwaffe_Command Level label
 	private JLabel cardDisplay = null;				//declaration for the label to display the cards
+	private JLabel RAF_TokenDisplay = null;			//declaration for RAF pieces display
+	private JLabel Luft_TokenDisplay = null;		//declaration for the Luftwaffe pieces display
 	private JLabel currentPlayer = null;			//current player variable
 	private JLabel currentPlayerLabel = null;		//declare the current player label
 	private JLabel messageboxLabel = null;			//declare the box that displays messages to the user 
@@ -308,6 +386,22 @@ public class gameMain extends JFrame {
 		this.cardDisplay.setBorder(this.loweredbevel);
 		this.add(cardDisplay);
 		
+		this.RAF_TokenDisplay = new JLabel();
+		this.RAF_TokenDisplay.setBounds(new Rectangle(10, 635, 50, 50));	
+		this.RAF_TokenDisplay.setText("");
+		this.RAF_TokenDisplay.setBackground(Color.black);
+		this.RAF_TokenDisplay.setIcon(AA1_1);
+		this.RAF_TokenDisplay.setBorder(this.loweredbevel);
+		this.add(RAF_TokenDisplay);
+		
+		this.Luft_TokenDisplay = new JLabel();
+		this.Luft_TokenDisplay.setBounds(new Rectangle(775, 635, 50, 50));	
+		this.Luft_TokenDisplay.setText("");
+		this.Luft_TokenDisplay.setBackground(Color.black);
+		this.Luft_TokenDisplay.setIcon(AA1_1);
+		this.Luft_TokenDisplay.setBorder(this.loweredbevel);
+		this.add(Luft_TokenDisplay);
+		
 		this.dieValue = new JLabel();
 		this.dieValue.setBounds(new Rectangle(1115, 450, 150, 25));
 		this.dieValue.setText("");
@@ -337,11 +431,32 @@ public class gameMain extends JFrame {
 		this.add(getCardLeft(), null);				//add cardLeft button to GUI
 		this.add(getCardRight(), null);				//add cardRight button to GUI
 		
-		
 		//setLayout(new BorderLayout()); 		
 		JLabel background = new JLabel(backgroundMapImage);
 		//background.setLayout(new OverlayLayout(background));	//overlay for multiple images
-		add(background);		
+		add(background);
+		
+		//Add cards to vectors
+		germanCardStack.add(GED01);		germanCardStack.add(GED02);		germanCardStack.add(GED03);
+		germanCardStack.add(GED04);		germanCardStack.add(GED05);		germanCardStack.add(GED06);
+		germanCardStack.add(GED07);		germanCardStack.add(GED08);		germanCardStack.add(GED09);
+		britishCardStack.add(BED10);	britishCardStack.add(BED11);	britishCardStack.add(BED12);
+		britishCardStack.add(BED13);	britishCardStack.add(BED14);	britishCardStack.add(BED15);
+		britishCardStack.add(BED16);	britishCardStack.add(BED17);	britishCardStack.add(BED18);
+		
+		//Add tokens to vectors
+		britishTokenStack.add(AA1_1);	britishTokenStack.add(AA1_2);		britishTokenStack.add(AA1_3);
+		britishTokenStack.add(AA2_1);	britishTokenStack.add(AA2_2);		britishTokenStack.add(Blen);
+		britishTokenStack.add(Decoy_1);	britishTokenStack.add(Decoy_2);		britishTokenStack.add(Decoy_3);
+		britishTokenStack.add(Defiant);	britishTokenStack.add(HQ_10);		britishTokenStack.add(HQ_11);
+		britishTokenStack.add(HQ_12);	britishTokenStack.add(Hurri_1);		britishTokenStack.add(Hurri_2);
+		britishTokenStack.add(Hurri_3);	britishTokenStack.add(Spitfire_1);	britishTokenStack.add(Spitfire_2);
+		germanTokenStack.add(Do17_1);	germanTokenStack.add(Do17_2);		germanTokenStack.add(He111_1);
+		germanTokenStack.add(He111_2);	germanTokenStack.add(He111_3);		germanTokenStack.add(He111_4);
+		germanTokenStack.add(He115);	germanTokenStack.add(Ju87_1);		germanTokenStack.add(Ju87_2);
+		germanTokenStack.add(Ju88_1);	germanTokenStack.add(Ju88_2);		germanTokenStack.add(Ju88_3);
+		germanTokenStack.add(Me109_1);	germanTokenStack.add(Me109_2);		germanTokenStack.add(Me109_3);
+		germanTokenStack.add(Me109_4);	germanTokenStack.add(Me110_1);		germanTokenStack.add(Me110_2);
 	}
 
 	
