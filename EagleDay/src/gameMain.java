@@ -18,13 +18,6 @@
 //**********LEARN AND UNDERSTAND HOW THE CODE WORKS BEFORE MAKING ANY CHANGES TO REDUCE NUMBER OF ERRORS**********
 //****************************************************************************************************************
 
-//notes for Steven
-//This is the URL for how to create a GridLayout and mouse listener )
-//http://stackoverflow.com/questions/8127418/gridlayout-mouse-listener
-
-
-
-//NEED ALL THESE IMPORT ITEMS
 import javax.swing.*;
 
 import java.awt.*;
@@ -41,6 +34,8 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+//first round the user sees all of the tokens, after placing all of them the UI 
+//changes to show Abort and Damage. 
 
 public class gameMain extends JFrame {
 
@@ -54,15 +49,11 @@ public class gameMain extends JFrame {
 				thisClass.setVisible(true);
 				thisClass.setResizable(false);		//Makes window static and not resizable
 				
-				
-				//THIS NEEDS TO BE COPIED
-		        createAndShowGui(); //for the grid layout
+				createAndShowGui(); //for the grid layout
 			}
 		});
 	}
 	
-	
-	//COPY THIS KYLE
 	public static void createAndShowGui() {
 	      JFrame frame = new JFrame("GridLayout");
 	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,24 +61,93 @@ public class gameMain extends JFrame {
 	      frame.pack();
 	      frame.setLocationRelativeTo(null);
 	      frame.setVisible(true);
-	   }
-
-	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); //loads map image
+	}
+	
+	
+	//DECLARATION OF IMAGES
+	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); 	//loads map image
 	private ImageIcon test = new ImageIcon("files/CARD_TEST.png");
+	//British Tokens
+	private ImageIcon AA1_1 = new ImageIcon("britishTokens/AA1_1.jpg"); 
+	private ImageIcon AA1_2 = new ImageIcon("britishTokens/AA1_2.jpg");
+	private ImageIcon AA1_3 = new ImageIcon("britishTokens/AA1_3.jpg");
+	private ImageIcon AA2_1 = new ImageIcon("britishTokens/AA2_1.jpg");
+	private ImageIcon AA2_2 = new ImageIcon("britishTokens/AA2_2.jpg");
+	private ImageIcon Blen = new ImageIcon("brisithTokens/Blen_1.jpg");
+	private ImageIcon Decoy_1 = new ImageIcon("britishTokens/Decoy_1.jpg");
+	private ImageIcon Decoy_2 = new ImageIcon("britishTokens/Decoy_2.jpg");
+	private ImageIcon Decoy_3 = new ImageIcon("britishTokens/Decoy_3.jpg");
+	private ImageIcon Defiant = new ImageIcon("britishTokens/Defiant_1.jpg");
+	private ImageIcon HQ_10 = new ImageIcon("britishTokens/HQ_10group.jpg");
+	private ImageIcon HQ_11 = new ImageIcon("britishTokens/HQ_11group.jpg");
+	private ImageIcon HQ_12 = new ImageIcon("britishTokens/HQ_12group.jpg");
+	private ImageIcon Hurri_1 = new ImageIcon("britishTokens/Hurri_1.jpg");
+	private ImageIcon Hurri_2 = new ImageIcon("britishTokens/Hurri_2.jpg");
+	private ImageIcon Hurri_3 = new ImageIcon("britishTokens/Hurri_3.jpg");
+	private ImageIcon Spitfire_1 = new ImageIcon("britishTokens/Spitfire_1.jpg");
+	private ImageIcon Spitfire_2 = new ImageIcon("britishTokens/Spitfire_2.jpg");
+	//German Tokens
+	private ImageIcon Do17_1 = new ImageIcon("germanTokens/Do17_1.jpg");
+	private ImageIcon Do17_2 = new ImageIcon("germanTokens/Do17_2.jpg");
+	private ImageIcon He111_1 = new ImageIcon("germanTokens/He111_1.jpg");
+	private ImageIcon He111_2 = new ImageIcon("germanTokens/He111_2.jpg");
+	private ImageIcon He111_3 = new ImageIcon("germanTokens/He111_3.jpg");
+	private ImageIcon He111_4 = new ImageIcon("germanTokens/He111_4.jpg");
+	private ImageIcon He115 = new ImageIcon("germanTokens/He115_1.jpg");
+	private ImageIcon Ju87_1 = new ImageIcon("germanTokens/Ju87_1.png");
+	private ImageIcon Ju87_2 = new ImageIcon("germanTokens/Ju87_2.jpg");
+	private ImageIcon Ju88_1 = new ImageIcon("germanTokens/Ju88_1.jpg");
+	private ImageIcon Ju88_2 = new ImageIcon("germanTokens/Ju88_2.jpg");
+	private ImageIcon Ju88_3 = new ImageIcon("germanTokens/Ju88_3.jpg");
+	private ImageIcon Me109_1 = new ImageIcon("germanTokens/Me109_1.jpg");
+	private ImageIcon Me109_2 = new ImageIcon("germanTokens/Me109_2.jpg");
+	private ImageIcon Me109_3 = new ImageIcon("germanTokens/Me109_3.jpg");
+	private ImageIcon Me109_4 = new ImageIcon("germanTokens/Me109_4.jpg");
+	private ImageIcon Me110_1 = new ImageIcon("germanTokens/Me110_1.jpg");
+	private ImageIcon Me110_2 = new ImageIcon("germanTokens/Me110_2.jpg");
+	//Cards
+	private ImageIcon GED01 = new ImageIcon("cards/GED01.png");
+	private ImageIcon GED02 = new ImageIcon("cards/GED02.png");
+	private ImageIcon GED03 = new ImageIcon("cards/GED03.png");
+	private ImageIcon GED04 = new ImageIcon("cards/GED04.png");
+	private ImageIcon GED05 = new ImageIcon("cards/GED05.png");
+	private ImageIcon GED06 = new ImageIcon("cards/GED06.png");
+	private ImageIcon GED07 = new ImageIcon("cards/GED07.png");
+	private ImageIcon GED08 = new ImageIcon("cards/GED08.png");
+	private ImageIcon GED09 = new ImageIcon("cards/GED09.png");
+	private ImageIcon BED10 = new ImageIcon("cards/BED10.png");
+	private ImageIcon BED11 = new ImageIcon("cards/BED11.png");
+	private ImageIcon BED12 = new ImageIcon("cards/BED12.png");
+	private ImageIcon BED13 = new ImageIcon("cards/BED13.jpg");
+	private ImageIcon BED14 = new ImageIcon("cards/BED14.jpg");
+	private ImageIcon BED15 = new ImageIcon("cards/BED15.jpg");
+	private ImageIcon BED16 = new ImageIcon("cards/BED16.jpg");
+	private ImageIcon BED17 = new ImageIcon("cards/BED17.jpg");
+	private ImageIcon BED18 = new ImageIcon("cards/BED18.jpg");
+	
 	
 
 	// Declaration of variables	
 	private int dice;			//variable for the rolling of die
 	private String diceValue;	//The output variable for the final dice value after roll
 	
-	// these arrays are for the cardStack of cards.
+	// these arrays are for the cardStack of cards. 
 	// You have as many or as few cards as you choose.
-	private String[] britishCardStack = new String[10];
-	private String[] germanCardStack = new String[10];
-	
+	private Vector<ImageIcon> britishCardStack = new Vector<ImageIcon>();	//9 British cards
+	private Vector<ImageIcon> germanCardStack = new Vector<ImageIcon>();	//9 German cards
 	// these vectors hold the players cards
-	private Vector<String> Player1Cards = new Vector<String>();
-	private Vector<String> Player2Cards = new Vector<String>();
+	private Vector<ImageIcon> britishCurrentCards = new Vector<ImageIcon>();	//British users current cards
+	private Vector<ImageIcon> germanCurrentCards = new Vector<ImageIcon>();		//German users current cards
+	
+	//Vectors to hold the tokens at different intervals of the game
+	private Vector<ImageIcon> britishTokenStack = new Vector<ImageIcon>();		//18 British Tokens to start
+	private Vector<ImageIcon> germanTokenStack = new Vector<ImageIcon>();		//18 German Tokens to start
+	private Vector<ImageIcon> britishAbortStack = new Vector<ImageIcon>();		//British aborted tokens
+	private Vector<ImageIcon> britishDamageStack = new Vector<ImageIcon>();		//British damaged tokens
+	private Vector<ImageIcon> germanAbortStack = new Vector<ImageIcon>();		//German aborted tokens
+	private Vector<ImageIcon> germanDamageStack = new Vector<ImageIcon>();		//German damaged tokens
+	
+
 	
 	// Declaration of GUI panels and components
 	private Border blackline = BorderFactory.createLineBorder(Color.black);		//declaration of the blackline border
@@ -103,13 +163,7 @@ public class gameMain extends JFrame {
 	private JButton cardRight = null;		//declare button that moves cards to the right so user can view them
 	
 	private JPanel ControlPanel = null;		//declare the main control panel
-	
-	
-	
-	
-	
-	//COPY THIS
-	private JPanel GridLayout = null;
+	private JPanel GridLayout = null; 
 	
 	private JTextArea messagebox = null;	//declare the message box to display text to the user
 	
@@ -120,11 +174,17 @@ public class gameMain extends JFrame {
 	private JLabel hourLabel = null;				//declare the hour label
 	private JLabel phase = null;					//phase variable
 	private JLabel phaseLabel = null;				//declare the phase label
+	private JLabel RAF_Abort = null;				//declare abort label for RAF
+	private JLabel RAF_Damage = null;				//declare damage label for RAF
+	private JLabel Luft_Abort = null;				//declare abort label for Luftwaffe
+	private JLabel Luft_Damage = null;				//declare damage label for Luftwaffe
 	private JLabel RAF_Commandlvl = null;			//RAF Command Level variable
 	private JLabel RAF_Commandlvl_Label = null;		//declare the RAF_Commandlevel label
 	private JLabel Luft_Commandlvl = null;			//Luft Command Level variable
 	private JLabel Luft_Commandlvl_Label = null;	//declare the Luftwaffe_Command Level label
 	private JLabel cardDisplay = null;				//declaration for the label to display the cards
+	private JLabel RAF_TokenDisplay = null;			//declaration for RAF pieces display
+	private JLabel Luft_TokenDisplay = null;		//declaration for the Luftwaffe pieces display
 	private JLabel currentPlayer = null;			//current player variable
 	private JLabel currentPlayerLabel = null;		//declare the current player label
 	private JLabel messageboxLabel = null;			//declare the box that displays messages to the user 
@@ -140,91 +200,62 @@ public class gameMain extends JFrame {
 		initialize();
 	}
 	
-	
-	
-	
-	//ALL OF THIS NEEDS TO BE COPIED!
 	//This is where the grid layout will be declared and implemented
-	public static class TestComponentAt extends JPanel {
-		   private static final int ROW_WIDTH = 17;
-		   private static final int ROW_HEIGHT = 12;
-		   private static final int W = 55;
-		   private static final int H = 48;
-		   private static final Dimension PREF_SIZE = new Dimension(W, H);
-		   protected static final Color SELECTION_COLOR = Color.white;
-		   private JPanel selectedPanel = null;
-		   private Color originalColor = null;
-		   //set color myColor = new color (255, 1,1, 128);
+		public static class TestComponentAt extends JPanel {
+			   private static final int ROW_WIDTH = 17;
+			   private static final int ROW_HEIGHT = 12;
+			   private static final int W = 55;
+			   private static final int H = 48;
+			   private static final Dimension PREF_SIZE = new Dimension(W, H);
+			   protected static final Color SELECTION_COLOR = Color.white;
+			   private JPanel selectedPanel = null;
+			   private Color originalColor = null;
+			   //set color myColor = new color (255, 1,1, 128);
 
-		   public TestComponentAt() {
-		      setLayout(new GridLayout(ROW_HEIGHT, ROW_WIDTH, 1, 1));
-		      setBackground(Color.black);
-		      
-		      for (int i = 0; i < ROW_HEIGHT * ROW_WIDTH; i++) {
-		         JPanel panel = new JPanel();
-		         for (int j = 0; j < ROW_HEIGHT * ROW_HEIGHT; j++)
-		         {
-		        	 
-		        	 //hello everybody
-		        	 
-		         }
-		         
-		         String name = String.format("[%d, %d]", 
-		            i  / ROW_HEIGHT, i % ROW_WIDTH); 
-		         panel.setName(name);
-		         if (i == 0) {
-		            originalColor = panel.getBackground();
-		         }
-		         panel.setPreferredSize(PREF_SIZE);
-		         add(panel);
-		      }
-		      addMouseListener(new MouseAdapter() {
-		         @Override
-		         public void mousePressed(MouseEvent e) {
-		            JPanel panel = (JPanel) getComponentAt(e.getPoint());
-		            if (panel == null || panel == TestComponentAt.this) {
-		               return;
-		            }
-		            if (selectedPanel != null) {
-		               selectedPanel.setBackground(originalColor);
-		               selectedPanel.removeAll();
-		               selectedPanel.revalidate();
-		               selectedPanel.repaint();
-		            }
-		            selectedPanel = panel;
-		            selectedPanel.setBackground(SELECTION_COLOR);
-		            selectedPanel.add(new JLabel(selectedPanel.getName()));
-		            selectedPanel.revalidate();
-		            selectedPanel.repaint();
-		         }
-		      });
-		   }
-	}
-		   //THIS IS THE LAST BIT OF CODE THAT NEEDS TO BE COPIED
-
-//		   public static void createAndShowGui() {
-//		      JFrame frame = new JFrame("TestComponentAt");
-//		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		      frame.getContentPane().add(new TestComponentAt());
-//		      frame.pack();
-//		      frame.setLocationRelativeTo(null);
-//		      frame.setVisible(true);
-//		   }
-
-//		public static int getRowHeight() {
-	//		return ROW_HEIGHT;
-//		}
-
-//		   public static void main(String[] args) {
-//		      SwingUtilities.invokeLater(new Runnable() {
-//		         public void run() {
-//		            createAndShowGui();
-//		         }
-//		      });
-		  // }
-		
-	
-	
+			   public TestComponentAt() {
+			      setLayout(new GridLayout(ROW_HEIGHT, ROW_WIDTH, 1, 1));
+			      setBackground(Color.black);
+			      
+			      for (int i = 0; i < ROW_HEIGHT * ROW_WIDTH; i++) {
+			         JPanel panel = new JPanel();
+			         for (int j = 0; j < ROW_HEIGHT * ROW_HEIGHT; j++)
+			         {
+			        	 
+			        	 
+			        	 
+			         }
+			         
+			         String name = String.format("[%d, %d]", 
+			            i  / ROW_HEIGHT, i % ROW_WIDTH); 
+			         panel.setName(name);
+			         if (i == 0) {
+			            originalColor = panel.getBackground();
+			         }
+			         panel.setPreferredSize(PREF_SIZE);
+			         add(panel);
+			      }
+			      addMouseListener(new MouseAdapter() {
+			         @Override
+			         public void mousePressed(MouseEvent e) {
+			            JPanel panel = (JPanel) getComponentAt(e.getPoint());
+			            if (panel == null || panel == TestComponentAt.this) {
+			               return;
+			            }
+			            if (selectedPanel != null) {
+			               selectedPanel.setBackground(originalColor);
+			               selectedPanel.removeAll();
+			               selectedPanel.revalidate();
+			               selectedPanel.repaint();
+			            }
+			            selectedPanel = panel;
+			            selectedPanel.setBackground(SELECTION_COLOR);
+			            selectedPanel.add(new JLabel(selectedPanel.getName()));
+			            selectedPanel.revalidate();
+			            selectedPanel.repaint();
+			         }
+			      });
+			   }
+		}
 	//Implements the newGame JButton
 	private JButton getNewGame() {
 		if (this.newGame == null) {
@@ -358,25 +389,6 @@ public class gameMain extends JFrame {
 		this.ControlPanel = new JPanel();
 		this.ControlPanel.setLayout(new GridBagLayout());		//set layout for panels and components
 		
-		//JPanel gameBoard = new JPanel (new GridLayout(0,9))// { //sets GridLayout for the gameBoard
-			
-//			public final Dimension getPerferredSize(){ //Attempts to set the correct dimensions for the overall grid layout
-//				Dimension d = super.getPreferredSize();
-//				Dimension prefSize = null;
-//				Component c = getParent();
-//				if (c == null) {
-//					prefsize = new Dimension (
-//						(int)d.getWidth(), (int)d.getHeight());
-//			
-//				} else if (c!= null &&
-//						c.getWidth()>d.getWidth() &&
-//						c.getHeight()>d.
-//			}
-			
-			
-	//	}
-		
-		
 		this.currentPlayerLabel = new JLabel();
 		this.currentPlayerLabel.setBounds(new Rectangle(1040, 70, 125, 25));
 		this.currentPlayerLabel.setText("Current Player: ");
@@ -449,6 +461,22 @@ public class gameMain extends JFrame {
 		this.cardDisplay.setBorder(this.loweredbevel);
 		this.add(cardDisplay);
 		
+		this.RAF_TokenDisplay = new JLabel();
+		this.RAF_TokenDisplay.setBounds(new Rectangle(10, 635, 50, 50));	
+		this.RAF_TokenDisplay.setText("");
+		this.RAF_TokenDisplay.setBackground(Color.black);
+		this.RAF_TokenDisplay.setIcon(AA1_1);
+		this.RAF_TokenDisplay.setBorder(this.loweredbevel);
+		this.add(RAF_TokenDisplay);
+		
+		this.Luft_TokenDisplay = new JLabel();
+		this.Luft_TokenDisplay.setBounds(new Rectangle(775, 635, 50, 50));	
+		this.Luft_TokenDisplay.setText("");
+		this.Luft_TokenDisplay.setBackground(Color.black);
+		this.Luft_TokenDisplay.setIcon(AA1_1);
+		this.Luft_TokenDisplay.setBorder(this.loweredbevel);
+		this.add(Luft_TokenDisplay);
+		
 		this.dieValue = new JLabel();
 		this.dieValue.setBounds(new Rectangle(1115, 450, 150, 25));
 		this.dieValue.setText("");
@@ -478,11 +506,32 @@ public class gameMain extends JFrame {
 		this.add(getCardLeft(), null);				//add cardLeft button to GUI
 		this.add(getCardRight(), null);				//add cardRight button to GUI
 		
-		
 		//setLayout(new BorderLayout()); 		
 		JLabel background = new JLabel(backgroundMapImage);
 		//background.setLayout(new OverlayLayout(background));	//overlay for multiple images
-		add(background);		
+		add(background);
+		
+		//Add cards to vectors
+		germanCardStack.add(GED01);		germanCardStack.add(GED02);		germanCardStack.add(GED03);
+		germanCardStack.add(GED04);		germanCardStack.add(GED05);		germanCardStack.add(GED06);
+		germanCardStack.add(GED07);		germanCardStack.add(GED08);		germanCardStack.add(GED09);
+		britishCardStack.add(BED10);	britishCardStack.add(BED11);	britishCardStack.add(BED12);
+		britishCardStack.add(BED13);	britishCardStack.add(BED14);	britishCardStack.add(BED15);
+		britishCardStack.add(BED16);	britishCardStack.add(BED17);	britishCardStack.add(BED18);
+		
+		//Add tokens to vectors
+		britishTokenStack.add(AA1_1);	britishTokenStack.add(AA1_2);		britishTokenStack.add(AA1_3);
+		britishTokenStack.add(AA2_1);	britishTokenStack.add(AA2_2);		britishTokenStack.add(Blen);
+		britishTokenStack.add(Decoy_1);	britishTokenStack.add(Decoy_2);		britishTokenStack.add(Decoy_3);
+		britishTokenStack.add(Defiant);	britishTokenStack.add(HQ_10);		britishTokenStack.add(HQ_11);
+		britishTokenStack.add(HQ_12);	britishTokenStack.add(Hurri_1);		britishTokenStack.add(Hurri_2);
+		britishTokenStack.add(Hurri_3);	britishTokenStack.add(Spitfire_1);	britishTokenStack.add(Spitfire_2);
+		germanTokenStack.add(Do17_1);	germanTokenStack.add(Do17_2);		germanTokenStack.add(He111_1);
+		germanTokenStack.add(He111_2);	germanTokenStack.add(He111_3);		germanTokenStack.add(He111_4);
+		germanTokenStack.add(He115);	germanTokenStack.add(Ju87_1);		germanTokenStack.add(Ju87_2);
+		germanTokenStack.add(Ju88_1);	germanTokenStack.add(Ju88_2);		germanTokenStack.add(Ju88_3);
+		germanTokenStack.add(Me109_1);	germanTokenStack.add(Me109_2);		germanTokenStack.add(Me109_3);
+		germanTokenStack.add(Me109_4);	germanTokenStack.add(Me110_1);		germanTokenStack.add(Me110_2);
 	}
 
 	
