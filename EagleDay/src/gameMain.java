@@ -18,11 +18,21 @@
 //**********LEARN AND UNDERSTAND HOW THE CODE WORKS BEFORE MAKING ANY CHANGES TO REDUCE NUMBER OF ERRORS**********
 //****************************************************************************************************************
 
+
+//notes for Steven
+//This is the URL for how to create a GridLayout and mouse listener )
+//http://stackoverflow.com/questions/8127418/gridlayout-mouse-listener
+
+
+
+//NEED ALL THESE IMPORT ITEMS
+
 import javax.swing.*;
 
 import java.awt.*;
 
 import javax.swing.border.*;
+
 
 //import components.TestComponentAt;
 //
@@ -33,6 +43,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 
 //first round the user sees all of the tokens, after placing all of them the UI 
 //changes to show Abort and Damage. 
@@ -54,6 +65,7 @@ public class gameMain extends JFrame {
 		});
 	}
 	
+
 	public static void createAndShowGui() {
 	      JFrame frame = new JFrame("GridLayout");
 	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,6 +75,8 @@ public class gameMain extends JFrame {
 	      frame.setVisible(true);
 	}
 	
+
+
 	
 	//DECLARATION OF IMAGES
 	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); 	//loads map image
