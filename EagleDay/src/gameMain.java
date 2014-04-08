@@ -18,14 +18,28 @@
 //**********LEARN AND UNDERSTAND HOW THE CODE WORKS BEFORE MAKING ANY CHANGES TO REDUCE NUMBER OF ERRORS**********
 //****************************************************************************************************************
 
+//notes for Steven
+//This is the URL for how to create a GridLayout and mouse listener )
+//http://stackoverflow.com/questions/8127418/gridlayout-mouse-listener
+
+
+
+//NEED ALL THESE IMPORT ITEMS
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import java.awt.Color;
 
 import javax.swing.border.*;
+
+//import components.TestComponentAt;
+//
+import java.util.*;
+import java.awt.Color;
+//imported for the grid layout
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class gameMain extends JFrame {
@@ -39,12 +53,28 @@ public class gameMain extends JFrame {
 				thisClass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				thisClass.setVisible(true);
 				thisClass.setResizable(false);		//Makes window static and not resizable
+				
+				
+				//THIS NEEDS TO BE COPIED
+		        createAndShowGui(); //for the grid layout
 			}
 		});
 	}
 	
+	
+	//COPY THIS KYLE
+	public static void createAndShowGui() {
+	      JFrame frame = new JFrame("GridLayout");
+	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      frame.getContentPane().add(new TestComponentAt());
+	      frame.pack();
+	      frame.setLocationRelativeTo(null);
+	      frame.setVisible(true);
+	   }
+
 	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); //loads map image
 	private ImageIcon test = new ImageIcon("files/CARD_TEST.png");
+	
 
 	// Declaration of variables	
 	private int dice;			//variable for the rolling of die
@@ -74,6 +104,13 @@ public class gameMain extends JFrame {
 	
 	private JPanel ControlPanel = null;		//declare the main control panel
 	
+	
+	
+	
+	
+	//COPY THIS
+	private JPanel GridLayout = null;
+	
 	private JTextArea messagebox = null;	//declare the message box to display text to the user
 	
 	private JLabel background = null;				//declare the map label
@@ -102,6 +139,91 @@ public class gameMain extends JFrame {
 		super();
 		initialize();
 	}
+	
+	
+	
+	
+	//ALL OF THIS NEEDS TO BE COPIED!
+	//This is where the grid layout will be declared and implemented
+	public static class TestComponentAt extends JPanel {
+		   private static final int ROW_WIDTH = 17;
+		   private static final int ROW_HEIGHT = 12;
+		   private static final int W = 55;
+		   private static final int H = 48;
+		   private static final Dimension PREF_SIZE = new Dimension(W, H);
+		   protected static final Color SELECTION_COLOR = Color.white;
+		   private JPanel selectedPanel = null;
+		   private Color originalColor = null;
+		   //set color myColor = new color (255, 1,1, 128);
+
+		   public TestComponentAt() {
+		      setLayout(new GridLayout(ROW_HEIGHT, ROW_WIDTH, 1, 1));
+		      setBackground(Color.black);
+		      
+		      for (int i = 0; i < ROW_HEIGHT * ROW_WIDTH; i++) {
+		         JPanel panel = new JPanel();
+		         for (int j = 0; j < ROW_HEIGHT * ROW_HEIGHT; j++)
+		         {
+		        	 
+		        	 //hello everybody
+		        	 
+		         }
+		         
+		         String name = String.format("[%d, %d]", 
+		            i  / ROW_HEIGHT, i % ROW_WIDTH); 
+		         panel.setName(name);
+		         if (i == 0) {
+		            originalColor = panel.getBackground();
+		         }
+		         panel.setPreferredSize(PREF_SIZE);
+		         add(panel);
+		      }
+		      addMouseListener(new MouseAdapter() {
+		         @Override
+		         public void mousePressed(MouseEvent e) {
+		            JPanel panel = (JPanel) getComponentAt(e.getPoint());
+		            if (panel == null || panel == TestComponentAt.this) {
+		               return;
+		            }
+		            if (selectedPanel != null) {
+		               selectedPanel.setBackground(originalColor);
+		               selectedPanel.removeAll();
+		               selectedPanel.revalidate();
+		               selectedPanel.repaint();
+		            }
+		            selectedPanel = panel;
+		            selectedPanel.setBackground(SELECTION_COLOR);
+		            selectedPanel.add(new JLabel(selectedPanel.getName()));
+		            selectedPanel.revalidate();
+		            selectedPanel.repaint();
+		         }
+		      });
+		   }
+	}
+		   //THIS IS THE LAST BIT OF CODE THAT NEEDS TO BE COPIED
+
+//		   public static void createAndShowGui() {
+//		      JFrame frame = new JFrame("TestComponentAt");
+//		      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		      frame.getContentPane().add(new TestComponentAt());
+//		      frame.pack();
+//		      frame.setLocationRelativeTo(null);
+//		      frame.setVisible(true);
+//		   }
+
+//		public static int getRowHeight() {
+	//		return ROW_HEIGHT;
+//		}
+
+//		   public static void main(String[] args) {
+//		      SwingUtilities.invokeLater(new Runnable() {
+//		         public void run() {
+//		            createAndShowGui();
+//		         }
+//		      });
+		  // }
+		
+	
 	
 	//Implements the newGame JButton
 	private JButton getNewGame() {
@@ -235,6 +357,25 @@ public class gameMain extends JFrame {
 		// Initializing GUI panels and components
 		this.ControlPanel = new JPanel();
 		this.ControlPanel.setLayout(new GridBagLayout());		//set layout for panels and components
+		
+		//JPanel gameBoard = new JPanel (new GridLayout(0,9))// { //sets GridLayout for the gameBoard
+			
+//			public final Dimension getPerferredSize(){ //Attempts to set the correct dimensions for the overall grid layout
+//				Dimension d = super.getPreferredSize();
+//				Dimension prefSize = null;
+//				Component c = getParent();
+//				if (c == null) {
+//					prefsize = new Dimension (
+//						(int)d.getWidth(), (int)d.getHeight());
+//			
+//				} else if (c!= null &&
+//						c.getWidth()>d.getWidth() &&
+//						c.getHeight()>d.
+//			}
+			
+			
+	//	}
+		
 		
 		this.currentPlayerLabel = new JLabel();
 		this.currentPlayerLabel.setBounds(new Rectangle(1040, 70, 125, 25));
