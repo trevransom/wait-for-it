@@ -1,7 +1,2 @@
-/.DS_Store
-/README.md
-/TEST.rtf
-/gameMain$1.class
-/gameMain$2.class
-/gameMain$3.class
-/gameMain$TestComponentAt$1.class
+/components
+/JPanel
