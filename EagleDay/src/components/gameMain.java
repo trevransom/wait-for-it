@@ -32,12 +32,10 @@ package components;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.*;
-import components.LayeredPane;
-
-//import components.gridLayoutPanel;
 //
 import java.util.*;
 import java.awt.Color;
+
 //imported for the grid layout
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -60,31 +58,16 @@ public class gameMain extends JFrame {
 				thisClass.setVisible(true);
 				thisClass.setResizable(false);		//Makes window static and not resizable
 				
-			
-				
-				thisClass.add(new gridLayoutPanel()); //places the 
 				
 				
+				thisClass.add(new gridLayoutPanel()); //implements the JPanel of GridLayout
 				
 				
-				//createAndShowGui(); //for the grid layout
 			}
 		});
 	}
 	
 
-//	public static void createAndShowGui() {
-//	      JFrame frame = new JFrame("GridLayout");
-//	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	      frame.getContentPane().add(new gridLayoutPanel());
-//	      frame.pack();
-//	      frame.setLocationRelativeTo(null);
-//	      frame.setVisible(true);
-//	}
-	
-
-
-	
 	//DECLARATION OF IMAGES
 	private ImageIcon backgroundMapImage = new ImageIcon ("files/MapFinal.png"); 	//loads map image
 	private ImageIcon test = new ImageIcon("files/CARD_TEST.png");
@@ -226,31 +209,25 @@ public class gameMain extends JFrame {
 		public static class gridLayoutPanel extends JPanel {
 			   private static final int ROW_WIDTH = 17;
 			   private static final int ROW_HEIGHT = 12;
-			   private static final int W = 20;
-			   private static final int H = 20;
+			   private static final int W = 30;
+			   private static final int H = 30;
 			   private static final Dimension PREF_SIZE = new Dimension(W, H);
-			  // gridLayoutPanel.setPreferredSize(new Dimension 600,400));
-			   
-			   
-			   protected static final Color SELECTION_COLOR = Color.blue;
+			   protected static final Color SELECTION_COLOR = Color.white;
 			   private JPanel selectedPanel = null;
 			   private Color originalColor = null;
 			   //set color myColor = new color (255, 1,1, 128);
-			   //selectedPanel.setMaximumSize(new Dimension(250, 250));
-			   
+
 			   public gridLayoutPanel() {
-				   //gridLayoutPanel.setPreferredSize(new Dimension(600,400));
+		//		   gridLayoutPanel.setPreferredSize(new Dimension(600,400));
 			      setLayout(new GridLayout(ROW_HEIGHT, ROW_WIDTH, 1, 1));
 			      setBackground(Color.black);
-			      
-			      //gridLayoutPanel.setPreferredSize(new dimension 250,250);
 			      
 			      for (int i = 0; i < ROW_HEIGHT * ROW_WIDTH; i++) {
 			         JPanel panel = new JPanel();
 			         for (int j = 0; j < ROW_HEIGHT * ROW_HEIGHT; j++)
 			         {
+			        	 //still need to figure out calculation logic
 			        	 
-			        	 //still need to accurately compute the positions of each grid
 			        	 
 			         }
 			         
@@ -267,7 +244,6 @@ public class gameMain extends JFrame {
 			         @Override
 			         public void mousePressed(MouseEvent e) {
 			            JPanel panel = (JPanel) getComponentAt(e.getPoint());
-			           // panel.setSize(;
 			            if (panel == null || panel == gridLayoutPanel.this) {
 			               return;
 			            }
@@ -286,7 +262,8 @@ public class gameMain extends JFrame {
 			      });
 			   }
 		}
-			
+		
+		
 		
 	//Implements the newGame JButton
 	private JButton getNewGame() {
